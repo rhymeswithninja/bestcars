@@ -98,7 +98,7 @@ def get_dealerships(request, state="All"):
     return JsonResponse(
         {
             "status": 200,
-            "dealers": dealers
+            "dealers": dealers,
         }
     )
 
