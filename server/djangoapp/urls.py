@@ -1,4 +1,3 @@
-# Uncomment the imports before you add the code
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
@@ -9,6 +8,7 @@ urlpatterns = [
     path(route='register', view=views.registration, name='register'),
     path(route='login', view=views.login_user, name='login'),
     path(route='logout', view=views.logout_request, name='logout'),
+    path(route='get_cars', view=views.get_cars, name='getcars'),
 
     # path for dealer reviews view
 
