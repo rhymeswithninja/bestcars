@@ -94,12 +94,22 @@ def get_dealerships(request, state="All"):
         endpoint = f"/fetchDealers/{state}"
 
     dealers = get_request(endpoint)
-    return JsonResponse({"status": 200, "dealers": dealers})
+    return JsonResponse(
+        {
+            "status": 200, 
+            "dealers": dealers
+        }
+    )
 
 
 def get_dealer_reviews(request, dealer_id):
     if not dealer_id:
-        return JsonResponse({"status": 400, "message": "Bad Request"})
+        return JsonResponse(
+            {
+                "status": 400, 
+                "message": "Bad Request"
+            }
+        )
 
     endpoint = f"/fetchReviews/dealer/{dealer_id}"
     reviews = get_request(endpoint) or []
@@ -109,12 +119,18 @@ def get_dealer_reviews(request, dealer_id):
         if sentiment is not None:
             review['sentiment'] = sentiment.get('sentiment')
 
-    return JsonResponse({"status": 200, "reviews": reviews})
+    return JsonResponse(
+        {
+            "status": 200, 
+            "reviews": reviews,
+        }
+    )
 
 
 def get_dealer_details(request, dealer_id):
     if not dealer_id:
-        return JsonResponse({"status": 400, "message": "Bad Request"})
+        return JsonResponse(
+            {"status": 400, "message": "Bad Request"})
 
     endpoint = f"/fetchDealer/{dealer_id}"
     dealer = get_request(endpoint)
@@ -123,7 +139,12 @@ def get_dealer_details(request, dealer_id):
 
 def add_review(request):
     if request.user.is_anonymous:
-        return JsonResponse({"status": 403, "message": "Unauthorized"})
+        return JsonResponse(
+            {
+                "status": 403, 
+                "message": "Unauthorized"
+            }
+        )
 
     data = json.loads(request.body)
     try:
@@ -131,7 +152,10 @@ def add_review(request):
         return JsonResponse({"status": 200})
     except Exception as e:
         logger.error(f"Error posting review: {e}")
-        return JsonResponse({
-            "status": 401,
-            "message": "Error in posting review",
-        })
+
+        return JsonResponse(
+            {
+                "status": 401,
+                "message": "Error in posting review",
+            }
+        )

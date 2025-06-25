@@ -9,7 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = (
-    "django-insecure-ccow$tz_=9%dxu4(0%^(z%nx32#"
+    "django-insecure-ccow$t"
+    "z_=9%dxu4(0%^(z%nx32#"
     "s@(zt9$ih@)5l54yny)wm-0"
 )
 
@@ -154,7 +155,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/static'),
-    os.path.join(BASE_DIR, 'frontend/build'),
-    os.path.join(BASE_DIR, 'frontend/build/static'),
+    os.path.join(
+        BASE_DIR, 
+        'frontend/static'
+    ),
+    os.path.join(
+        BASE_DIR, 
+        'frontend/build'
+    ),
+    os.path.join(
+        BASE_DIR, 
+        'frontend/build/static'
+    ),
 ]
