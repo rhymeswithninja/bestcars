@@ -7,39 +7,25 @@ on:
     branches: [master, main]
 
 jobs:
-  lint_python:
-    name: Lint Python Files
+  lint:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.12
+      - uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8
-        
-    - name: Format Python with Black
-      run: |
-        pip install black
-        black .
-        
-    - name: Print working directory
-      run: pwd
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-    - name: Run Linter
-      run: |
-        pwd
-        # This command finds all Python files recursively and runs flake8 on them
-        find . -name "*.py" -exec flake8 {} +
-        echo "Linted all the python files successfully"
-        
+      - name: Install dependencies
+        run: |
+          pip install black flake8
 
+      - name: Format code with Black
+        run: black .
+
+      - name: Lint with Flake8
+        run: flake8 .
     
   lint_js:
       name: Lint JavaScript Files
