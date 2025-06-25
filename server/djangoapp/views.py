@@ -60,9 +60,18 @@ def registration(request):
             email=email,
         )
         login(request, user)
-        return JsonResponse({"userName": username, "status": "Authenticated"})
-
-    return JsonResponse({"userName": username, "error": "Already Registered"})
+        return JsonResponse(
+            {
+                "userName": username,
+                "status": "Authenticated"
+            }
+        )
+    return JsonResponse(
+        {
+            "userName": username,
+            "error": "Already Registered",
+        }
+    )
 
 
 def get_cars(request):
