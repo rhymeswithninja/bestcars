@@ -96,7 +96,7 @@ def get_dealerships(request, state="All"):
     dealers = get_request(endpoint)
     return JsonResponse(
         {
-            "status": 200, 
+            "status": 200,
             "dealers": dealers
         }
     )
@@ -106,7 +106,7 @@ def get_dealer_reviews(request, dealer_id):
     if not dealer_id:
         return JsonResponse(
             {
-                "status": 400, 
+                "status": 400,
                 "message": "Bad Request"
             }
         )
@@ -121,7 +121,7 @@ def get_dealer_reviews(request, dealer_id):
 
     return JsonResponse(
         {
-            "status": 200, 
+            "status": 200,
             "reviews": reviews,
         }
     )
@@ -141,7 +141,7 @@ def add_review(request):
     if request.user.is_anonymous:
         return JsonResponse(
             {
-                "status": 403, 
+                "status": 403,
                 "message": "Unauthorized"
             }
         )
